@@ -1,7 +1,7 @@
 from pico2d import *
 
 
-TUK_WIDTH, TUK_HEIGHT = 1280, 1024
+TUK_WIDTH, TUK_HEIGHT = 1024, 768
 FRAME_SIZE = 100
 FRAME_COUNT = 8
 SPEED = 5
@@ -64,7 +64,7 @@ face = 1
 
 while running:
     clear_canvas()
-    tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
+    tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2, TUK_WIDTH, TUK_HEIGHT)
     character.clip_draw(frame * FRAME_SIZE, get_sprite_row(), FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
     handle_events()
