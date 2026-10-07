@@ -5,6 +5,9 @@ TUK_WIDTH, TUK_HEIGHT = 1024, 768
 FRAME_SIZE = 100
 FRAME_COUNT = 8
 SPEED = 5
+# 머리와 발이 화면 밖으로 나가지 않도록 위아래 경계에 여유를 더 준다
+MARGIN_X = FRAME_SIZE // 2
+MARGIN_Y = FRAME_SIZE // 2 + 20
 
 # animation_sheet.png 각 행의 y 좌표 (pico2d는 아래쪽이 0)
 IDLE_RIGHT, IDLE_LEFT, RUN_RIGHT, RUN_LEFT = 300, 200, 100, 0
@@ -71,8 +74,8 @@ while running:
     if not running:
         break
 
-    x = clamp(FRAME_SIZE // 2, x + dir_x * SPEED, TUK_WIDTH - FRAME_SIZE // 2)
-    y = clamp(FRAME_SIZE // 2, y + dir_y * SPEED, TUK_HEIGHT - FRAME_SIZE // 2)
+    x = clamp(MARGIN_X, x + dir_x * SPEED, TUK_WIDTH - MARGIN_X)
+    y = clamp(MARGIN_Y, y + dir_y * SPEED, TUK_HEIGHT - MARGIN_Y)
     frame = (frame + 1) % FRAME_COUNT
     delay(0.05)
 
