@@ -8,7 +8,7 @@ character = load_image('animation_sheet.png')
 
 
 def handle_events():
-    global running, dir_x, dir_y
+    global running, dir_x, dir_y, face
 
     events = get_events()
     for event in events:
@@ -34,6 +34,12 @@ def handle_events():
                 dir_y -= 1
             elif event.key == SDLK_DOWN:
                 dir_y += 1
+
+    # 좌우로 움직일 때만 바라보는 방향을 바꾸고, 상하 이동은 기존 방향을 유지한다
+    if dir_x > 0:
+        face = 1
+    elif dir_x < 0:
+        face = -1
 
 
 running = True
