@@ -2,6 +2,9 @@ from pico2d import *
 
 
 TUK_WIDTH, TUK_HEIGHT = 1280, 1024
+FRAME_SIZE = 100
+FRAME_COUNT = 8
+SPEED = 5
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
 tuk_ground = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
@@ -55,12 +58,12 @@ while running:
         row = 300 if face == 1 else 200
     else:
         row = 100 if face == 1 else 0
-    character.clip_draw(frame * 100, row, 100, 100, x, y)
+    character.clip_draw(frame * FRAME_SIZE, row, FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
     handle_events()
-    x = clamp(50, x + dir_x * 5, TUK_WIDTH - 50)
-    y = clamp(50, y + dir_y * 5, TUK_HEIGHT - 50)
-    frame = (frame + 1) % 8
+    x = clamp(FRAME_SIZE // 2, x + dir_x * SPEED, TUK_WIDTH - FRAME_SIZE // 2)
+    y = clamp(FRAME_SIZE // 2, y + dir_y * SPEED, TUK_HEIGHT - FRAME_SIZE // 2)
+    frame = (frame + 1) % FRAME_COUNT
     delay(0.05)
 
 close_canvas()
