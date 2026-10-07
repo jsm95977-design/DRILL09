@@ -20,6 +20,7 @@ running = True
 
 while running:
     clear_canvas()
+    tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
     update_canvas()
     handle_events()
     delay(0.05)
