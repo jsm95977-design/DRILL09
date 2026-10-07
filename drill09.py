@@ -51,7 +51,10 @@ face = 1
 while running:
     clear_canvas()
     tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
-    row = 300 if face == 1 else 200
+    if dir_x == 0 and dir_y == 0:
+        row = 300 if face == 1 else 200
+    else:
+        row = 100 if face == 1 else 0
     character.clip_draw(frame * 100, row, 100, 100, x, y)
     update_canvas()
     handle_events()
