@@ -19,9 +19,13 @@ def handle_events():
                 running = False
             elif event.key == SDLK_RIGHT:
                 dir_x += 1
+            elif event.key == SDLK_LEFT:
+                dir_x -= 1
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
                 dir_x -= 1
+            elif event.key == SDLK_LEFT:
+                dir_x += 1
 
 
 running = True
