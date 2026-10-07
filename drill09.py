@@ -48,6 +48,13 @@ def handle_events():
         face = -1
 
 
+def get_sprite_row():
+    # 멈춰 있으면 idle, 움직이면 달리기. 좌우는 바라보는 방향으로 고른다
+    if dir_x == 0 and dir_y == 0:
+        return IDLE_RIGHT if face == 1 else IDLE_LEFT
+    return RUN_RIGHT if face == 1 else RUN_LEFT
+
+
 running = True
 x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 frame = 0
@@ -57,11 +64,7 @@ face = 1
 while running:
     clear_canvas()
     tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
-    if dir_x == 0 and dir_y == 0:
-        row = IDLE_RIGHT if face == 1 else IDLE_LEFT
-    else:
-        row = RUN_RIGHT if face == 1 else RUN_LEFT
-    character.clip_draw(frame * FRAME_SIZE, row, FRAME_SIZE, FRAME_SIZE, x, y)
+    character.clip_draw(frame * FRAME_SIZE, get_sprite_row(), FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
     handle_events()
     x = clamp(FRAME_SIZE // 2, x + dir_x * SPEED, TUK_WIDTH - FRAME_SIZE // 2)
