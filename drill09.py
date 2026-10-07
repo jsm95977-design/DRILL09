@@ -59,7 +59,7 @@ while running:
     update_canvas()
     handle_events()
     x = clamp(50, x + dir_x * 5, TUK_WIDTH - 50)
-    y += dir_y * 5
+    y = clamp(50, y + dir_y * 5, TUK_HEIGHT - 50)
     frame = (frame + 1) % 8
     delay(0.05)
 
