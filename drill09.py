@@ -58,7 +58,7 @@ while running:
     character.clip_draw(frame * 100, row, 100, 100, x, y)
     update_canvas()
     handle_events()
-    x += dir_x * 5
+    x = clamp(50, x + dir_x * 5, TUK_WIDTH - 50)
     y += dir_y * 5
     frame = (frame + 1) % 8
     delay(0.05)
