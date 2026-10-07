@@ -8,6 +8,7 @@ SPEED = 5
 
 # animation_sheet.png 각 행의 y 좌표 (pico2d는 아래쪽이 0)
 IDLE_RIGHT, IDLE_LEFT, RUN_RIGHT, RUN_LEFT = 300, 200, 100, 0
+
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
 tuk_ground = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
