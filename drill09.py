@@ -5,6 +5,9 @@ TUK_WIDTH, TUK_HEIGHT = 1280, 1024
 FRAME_SIZE = 100
 FRAME_COUNT = 8
 SPEED = 5
+
+# animation_sheet.png 각 행의 y 좌표 (pico2d는 아래쪽이 0)
+IDLE_RIGHT, IDLE_LEFT, RUN_RIGHT, RUN_LEFT = 300, 200, 100, 0
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
 tuk_ground = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
@@ -55,9 +58,9 @@ while running:
     clear_canvas()
     tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
     if dir_x == 0 and dir_y == 0:
-        row = 300 if face == 1 else 200
+        row = IDLE_RIGHT if face == 1 else IDLE_LEFT
     else:
-        row = 100 if face == 1 else 0
+        row = RUN_RIGHT if face == 1 else RUN_LEFT
     character.clip_draw(frame * FRAME_SIZE, row, FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
     handle_events()
