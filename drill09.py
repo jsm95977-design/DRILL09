@@ -67,6 +67,9 @@ while running:
     character.clip_draw(frame * FRAME_SIZE, get_sprite_row(), FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
     handle_events()
+    if not running:
+        break
+
     x = clamp(FRAME_SIZE // 2, x + dir_x * SPEED, TUK_WIDTH - FRAME_SIZE // 2)
     y = clamp(FRAME_SIZE // 2, y + dir_y * SPEED, TUK_HEIGHT - FRAME_SIZE // 2)
     frame = (frame + 1) % FRAME_COUNT
